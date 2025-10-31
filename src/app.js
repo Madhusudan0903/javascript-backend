@@ -14,4 +14,10 @@ app.use(express.urlencoded({extended: true, limit: "16kb"})) //ab express ko bta
 app.use(express.static("public")) //kuch bhi images, favicon aisa kuch hai to public me rkhlunga
 app.use(cookieParser()) //mai mere server se user ke browser ki andar ki cookies access krpau aur unko set bhi krpau, basically crud operation perform krpau
 
+//routes import
+import userRouter from './routes/user.routes.js'
+
+//routes declaration
+app.use("/api/v1/users", userRouter)
+
 export { app }
