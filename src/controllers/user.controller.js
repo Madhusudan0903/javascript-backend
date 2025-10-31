@@ -36,7 +36,7 @@ const registerUser = asyncHandler(async (req, res) => {
   if (existedUser) {
     throw new ApiError(409, "User with email or username already exists");
   }
-
+  //console.log(req.files);
   //step4: phele req.body me apne ko sara data milta tha but ab images ke liye apn ne ek middleware add kia tha so vo bhi apne kuch access deta hai, vo req me aur fields add krdeta hai aur multer files ka access dedeta hai
   const avatarLocalPath = req.files?.avatar[0]?.path;
   //const coverImageLocalPath = req.files?.coverImage[0]?.path;
@@ -51,6 +51,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   if (!avatarLocalPath) {
+    //ye vala check cover image pr nhi lgaya
     throw new ApiError(400, "Avatar file is required");
   }
 
